@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: gcr.io/sandbox-293820/rlt-test
+  repository: gcr.io/gke-testing-295218/rlt-test
   tag: latest
   pullPolicy: Always
 
@@ -23,7 +23,7 @@ ingress:
 resources: {}
 
 nodeSelector:
-  cloud.google.com/gke-nodepool: sandbox-293820-gke-node-pool
+  cloud.google.com/gke-nodepool: pxp8ap3-gke-test-node-pool
 
 tolerations: []
 

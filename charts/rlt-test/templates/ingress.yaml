@@ -5,6 +5,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
+  namespace: prod
   labels:
     app: {{ template "rlt-test.name" . }}
     chart: {{ template "rlt-test.chart" . }}

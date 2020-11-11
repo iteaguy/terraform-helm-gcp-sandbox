@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "rlt-test.fullname" . }}
+  namespace: prod
   labels:
     app: {{ template "rlt-test.name" . }}
     chart: {{ template "rlt-test.chart" . }}
@@ -25,16 +26,18 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 80
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /html
+              path: /
               port: http
+            initialDelaySeconds: 5
           readinessProbe:
             httpGet:
-              path: /html
+              path: /
               port: http
+            initialDelaySeconds: 5
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}

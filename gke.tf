@@ -15,7 +15,7 @@ variable "gke_num_nodes" {
 
 # GKE cluster
 resource "google_container_cluster" "primary" {
-  name     = "${var.project_id}-gke"
+  name     = "pxp8ap3-gke-test"
   location = var.region
 
   remove_default_node_pool = true
@@ -52,8 +52,8 @@ resource "google_container_node_pool" "primary_nodes" {
     }
 
     # preemptible  = true
-    machine_type = "n1-standard-1"
-    tags         = ["gke-node", "${var.project_id}-gke"]
+    machine_type = "e2-medium"
+    tags         = ["gke-node", "pxp8ap3-gke-test"]
     metadata = {
       disable-legacy-endpoints = "true"
     }
